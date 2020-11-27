@@ -44,7 +44,7 @@ struct signal
   {'Я', "*-*-"}
 };
 
-void print_morzhe(const char* msg, int latency_ms = 569, int perSignal_ms = 128, int perSignalLine_ms = 360);
+void print_morse(const char* msg, int latency_ms = 569, int perSignal_ms = 128, int perSignalLine_ms = 360);
 
 void setup() {
 #ifdef _DBG

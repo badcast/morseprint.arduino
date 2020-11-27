@@ -1,4 +1,4 @@
-#define __DBG
+//#define __DBG // Uncomment for Debug Output
 const char message[] = {'П', 'Р', 'И', 'В', 'Е', 'Т', '\0'};
 struct signal
 {

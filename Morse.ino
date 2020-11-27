@@ -1,5 +1,10 @@
-//#define __DBG // Uncomment for Debug Output
-const char message[] = {'П', 'Р', 'И', 'В', 'Е', 'Т', '\0'};
+//#define _DBG // Uncomment for Debug Output
+
+#if !defined(_DBG)
+  #define _DBG
+#endif
+
+const char message[] = {'П', 'Р', 'И', 'В', 'Е', 'Т', '\0'}; // Сообщение
 struct signal
 {
   byte ch; //character
@@ -52,26 +57,22 @@ void setup() {
 }
 
 void loop() {
- print_morzhe(message);
+  //Показывать бесконечно
+ print_morse(message);
 }
 
-//Показать морзе в ->
-void print_morzhe(const char* msg, int latency_ms, int perSignal_ms, int perSignalLine_ms) {
-
-  register byte i;
-  register byte j, k;
-  signal* pS;
+void print_morse(const char* msg, int latency_ms, int perSignal_ms, int perSignalLine_ms) {
+  register byte i, j, k;
   const byte len = strlen(msg);
-  //подготовка
+  signal* pS;
+  
   digitalWrite(LED_BUILTIN, LOW);
   for (i = 0; i < len; ++i) {
-    //Реализация пикания (морзе)
     j = (byte)msg[i];
     if (j >= static_cast<byte>('А') && j <= static_cast<byte>('Я'))
     {
       pS = &ss[j - (byte)'А'];
       k = strlen(pS->rules);
-      //LED ON and LED OFF (PICKING)
       for (j = 0; j < k; ++j) {
         digitalWrite(LED_BUILTIN, HIGH);
         delay( ((pS->rules[j] == '*' ) ? perSignal_ms : perSignalLine_ms));

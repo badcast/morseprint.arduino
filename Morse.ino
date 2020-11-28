@@ -1,9 +1,5 @@
 //#define _DBG // Uncomment for Debug Output
 
-#if !defined(_DBG)
-  #define _DBG
-#endif
-
 const char message[] = {'П', 'Р', 'И', 'В', 'Е', 'Т', '\0'}; // Сообщение
 struct signal
 {
